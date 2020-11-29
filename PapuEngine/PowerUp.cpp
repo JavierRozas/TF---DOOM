@@ -39,7 +39,7 @@ void PowerUp::update(const std::vector<std::string>& levelData,
 
 	static std::mt19937 randomEngine(time(nullptr));
 	static std::uniform_real_distribution<float>randDir(-1.0f, 1.0f);
-	_position += _direction * _speed;
+	//_position += _direction * _speed;
 	if (collideWithLevel(levelData)) {
 		_direction = glm::vec2(randDir(randomEngine), randDir(randomEngine));
 	}
