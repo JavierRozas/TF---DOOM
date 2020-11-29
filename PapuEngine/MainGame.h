@@ -26,6 +26,8 @@ class MainGame
 private:
 	int _witdh;
 	int _height;
+	int tiempo_recarga_balas;
+	bool bala_recargando;
 	float _time;
 	vector<Level*> _levels;
 	Player* _player;
