@@ -63,7 +63,7 @@ bool Agent::collideWithLevel(const std::vector<std::string>& levelData)
 	checkTilePosition(levelData, collideTilePosition, _position.x + AGENT_WIDTH, _position.y);
 	checkTilePosition(levelData, collideTilePosition, _position.x, _position.y+ AGENT_WIDTH);
 	checkTilePosition(levelData, collideTilePosition, _position.x + AGENT_WIDTH, _position.y + AGENT_WIDTH);
-	if (collideTilePosition.size() == 0)return false;
+	if (collideTilePosition.size() == 0) return false;
 	for (size_t i = 0; i < collideTilePosition.size(); i++)
 	{
 		collidWithTile(collideTilePosition[i]);
@@ -101,14 +101,22 @@ void Agent::draw(SpriteBacth& spriteBatch, int type)
 	case 3: 
 	{
 		textureID = ResourceManager::getTexture("Textures/proyectil.png").id; 
-		w = h = 30;  
+		w = h = 40;  
 		break;
 	}
 	case 4: break;
 	}
 	const glm::vec4 uvRect(0.0f, 0.0f, 1.0f, 1.0f);
-	glm::vec4 destRect(_position.x, _position.y, AGENT_WIDTH - w, AGENT_WIDTH - h);
-	spriteBatch.draw(destRect, uvRect, textureID, 0.0f, _color);
+	if (type == 3) {
+		glm::vec4 destRect(_position.x+25, _position.y+25, AGENT_WIDTH - w, AGENT_WIDTH - h);
+		spriteBatch.draw(destRect, uvRect, textureID, 0.0f, _color);
+	}
+	else {
+		glm::vec4 destRect(_position.x, _position.y, AGENT_WIDTH - w, AGENT_WIDTH - h);
+		spriteBatch.draw(destRect, uvRect, textureID, 0.0f, _color);
+	}
+
+	
 
 }
 
