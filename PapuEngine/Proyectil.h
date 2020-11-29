@@ -5,7 +5,6 @@ class Proyectil : public Agent
 {
 protected:
 	glm::vec2 _direction;
-	int _daño;
 public:
     Proyectil();
 	~Proyectil();
@@ -14,6 +13,6 @@ public:
 	void setColor();
 	glm::vec2 getPosition();
 	void init(float speed, glm::vec2 position, char dir);
-	int get_daño();
+	bool specialcollide(const std::vector<std::string>& levelData);
 };
 
