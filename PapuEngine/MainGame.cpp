@@ -227,6 +227,7 @@ void MainGame::update() {
 			//CADA ZOMBIE VERIFICA SI CHOCÓ CON UN PROYECTIL
 			for (size_t j = 0; j < _proyectiles.size(); j++){
 				if(_zombies[i]->collideWithAgent(_proyectiles[j])){
+					//RESTAR VIDA 
 					_proyectiles.erase(_proyectiles.begin() + j);
 					_zombies.erase(_zombies.begin() + i);
 				}
@@ -242,6 +243,10 @@ void MainGame::update() {
 		for (size_t i = 0; i < _objects.size(); i++)
 		{
 			_objects[i]->update(_levels[_currentLevel]->getLevelData(), _humans, _zombies);
+			if (_objects[i]->collideWithAgent(_player)) {
+				_objects.erase(_objects.begin() + i);
+				_player->boost();
+			}
 		}
 		for (size_t i = 0; i < _proyectiles.size(); i++)
 		{
