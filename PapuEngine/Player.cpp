@@ -14,7 +14,7 @@ void Player::init(float speed, glm::vec2 position,
 {
 	_speed = speed;
 	_position = position;
-	_color.set(0, 0, 185, 255);
+	_color.set(255, 255, 255, 255);
 	_inputManager = inputManager;
 	_lastkey = 'w';
 }
