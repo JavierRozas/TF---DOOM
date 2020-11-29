@@ -27,9 +27,9 @@ void MainGame::initLevel() {
 	_levels.push_back(new Level("Levels/level1.txt"));
 	_player = new Player();
 	_currentLevel = 0;
-	tiempo_recarga_balas = 150;
+	tiempo_recarga_balas = 30;
 	bala_recargando = false;
-	_player->init(0.2f, 
+	_player->init(1.0f, 
 				_levels[_currentLevel]->getPlayerPosition(), &_inputManager);
 	_spriteBacth.init();
 
@@ -56,13 +56,13 @@ void MainGame::initLevel() {
 	for (size_t i = 0; i < zombiesPosition.size(); i++)
 	{	
 		_demonios.push_back(new Demonio());
-		_demonios.back()->init(0.05f, zombiesPosition[i]);
+		_demonios.back()->init(1.0f, zombiesPosition[i]);
 	}
 
 	for (size_t i = 0; i < objectPosition.size(); i++)
 	{
 		_objects.push_back(new PowerUp());
-		_objects.back()->init(0.2f, objectPosition[i]);
+		_objects.back()->init(0.5f, objectPosition[i]);
 	}
 }
 
@@ -175,7 +175,7 @@ void MainGame::procesInput() {
 			//CREAR BALA E INICIALIZAR
 			if (bala_recargando == false) {
 				_proyectiles.push_back(new Proyectil());
-				_proyectiles.back()->init(0.5f, _player->getPosition(), _player->getlastkey());
+				_proyectiles.back()->init(2.0f, _player->getPosition(), _player->getlastkey());
 				bala_recargando = true;
 			}
 		}
@@ -266,7 +266,7 @@ void MainGame::update() {
 		if (bala_recargando == true) {
 			tiempo_recarga_balas = tiempo_recarga_balas - 1;
 			if (tiempo_recarga_balas < 0) {
-				tiempo_recarga_balas = 150;
+				tiempo_recarga_balas = 30;
 				bala_recargando = false;
 			}
 		}
