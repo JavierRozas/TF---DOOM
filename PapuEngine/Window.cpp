@@ -34,7 +34,7 @@ int Window::create(string windowName, int screenWidth, int screenHeight, unsigne
 
 	}
 	
-	glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
+	glClearColor(1.0f, 0.5f, 0.0f, 1.0f);
 	SDL_GL_SetSwapInterval(0);
 
 	glEnable(GL_BLEND);
