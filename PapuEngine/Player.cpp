@@ -20,25 +20,33 @@ void Player::init(float speed, glm::vec2 position,
 	_color.set(255, 255, 255, 255);
 	_inputManager = inputManager;
 	_lastkey = 'w';
-	da�o = 1;
+	daño = 1;
 }
 
 void Player::update(const std::vector<std::string>& levelData,
 	std::vector<Human*>& humans, std::vector<Demonio*>& zombies) {
 	if (_inputManager->isKeyPressed(SDLK_w)) {
 		_position.y += _speed;
-		_lastkey = 'w';
 	}
 	if (_inputManager->isKeyPressed(SDLK_s)) {
 		_position.y -= _speed;
-		_lastkey = 's';
 	}
 	if (_inputManager->isKeyPressed(SDLK_a)) {
 		_position.x -= _speed;
-		_lastkey = 'a';
 	}
 	if (_inputManager->isKeyPressed(SDLK_d)) {
 		_position.x += _speed;
+	}
+	if (_inputManager->isKeyPressed(SDLK_UP)) {
+		_lastkey = 'w';
+	}
+	if (_inputManager->isKeyPressed(SDLK_DOWN)) {
+		_lastkey = 's';
+	}
+	if (_inputManager->isKeyPressed(SDLK_LEFT)) {
+		_lastkey = 'a';
+	}
+	if (_inputManager->isKeyPressed(SDLK_RIGHT)) {
 		_lastkey = 'd';
 	}
 	collideWithLevel(levelData);
@@ -60,8 +68,13 @@ void Player::boost()
 	srand(time(0));
 	int r = rand() % (2);
 	switch (r) {
-	case 0: _speed += 0.5;
-	case 1: da�o += 2;
+	case 0: _speed += 0.3;
+	case 1: daño += 2;
 	}
 
+}
+
+int Player::get_daño()
+{
+	return daño;
 }
