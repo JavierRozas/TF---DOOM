@@ -53,10 +53,10 @@ void Demonio::update(const std::vector<std::string>& levelData,
 	}
 	*/
 }
-
+/*
 Human* Demonio::getNearestHuman(std::vector<Human*>& humans) {
 	Human* closestHuman = nullptr;
-	float smallestDistance = 8888.0f;
+	float smallestDistance = 100.0f;
 	for (size_t i = 0; i < humans.size(); i++)
 	{
 		glm::vec2 dist = humans[i]->getPosition() - _position;
@@ -67,12 +67,12 @@ Human* Demonio::getNearestHuman(std::vector<Human*>& humans) {
 		}
 	}
 	return closestHuman;
-}
+}*/
 
 void Demonio::init(float speed, glm::vec2 position) {
 	_speed = speed;
 	_position = position;
-	_life = 1;
+	_life = 3;
 	// _color.set(0, 0, 0, 255);
 }
 
@@ -85,3 +85,9 @@ void Demonio::randir(){
 int Demonio::get_life(){
 	return _life;
 }
+
+void Demonio::inflict(int i)
+{
+	_life -= i;
+}
+
