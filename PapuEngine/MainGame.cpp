@@ -218,11 +218,16 @@ void MainGame::update() {
 
 			_demonios[i]->update(_levels[_currentLevel]->getLevelData(), _humans, _demonios);
 			Human* closeHuman = _player;
+			float smallestDistance = 400.0f;
 			if (closeHuman != nullptr) {
 				glm::vec2 direction = glm::normalize(
 					closeHuman->getPosition() - _demonios[i]->getPosition()
 				);
-				_demonios[i]->setPosition(_demonios[i]->getPosition() += direction * _demonios[i]->getspeed());
+				glm::vec2 dist = _player->getPosition() - _demonios[i]->getPosition();
+				float distance = glm::length(dist);
+				if (distance < smallestDistance) {
+					_demonios[i]->setPosition(_demonios[i]->getPosition() += direction * _demonios[i]->getspeed());
+				}
 			}
 			/*for (size_t j = 0; j < _humans.size(); j++) {
 				if (_demonios[i]->collideWithAgent(_humans[j])) {
@@ -262,7 +267,7 @@ void MainGame::update() {
 		{
 			_proyectiles[i]->update(_levels[_currentLevel]->getLevelData(), _humans, _demonios);
 			//ELIMINO PROYECTIL SI CHOCA CON LA PARED
-			if (_proyectiles[i]->collideWithLevel(_levels[_currentLevel]->getLevelData())) {
+			if (_proyectiles[i]->specialcollide(_levels[_currentLevel]->getLevelData())) {
 				_proyectiles.erase(_proyectiles.begin() + i);
 			}
 		}
