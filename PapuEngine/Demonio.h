@@ -14,8 +14,9 @@ public:
 	void setPosition(glm::vec2 position);
 	void update(const std::vector<std::string>& levelData,
 		std::vector<Human*>& humans, std::vector<Demonio*>& dominios);
-	Human* getNearestHuman(std::vector<Human*>& humans);
+	//Human* getNearestHuman(std::vector<Human*>& humans);
 	void randir();
 	int get_life();
+	void inflict(int i);
 };
 
