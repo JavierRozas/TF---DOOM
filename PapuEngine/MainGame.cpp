@@ -55,8 +55,8 @@ void MainGame::initLevel() {
 
 	for (size_t i = 0; i < zombiesPosition.size(); i++)
 	{	
-		_zombies.push_back(new Zombie());
-		_zombies.back()->init(0.05f, zombiesPosition[i]);
+		_demonios.push_back(new Demonio());
+		_demonios.back()->init(0.05f, zombiesPosition[i]);
 	}
 
 	for (size_t i = 0; i < objectPosition.size(); i++)
@@ -100,9 +100,9 @@ void MainGame::draw() {
 	{
 		_humans[i]->draw(_spriteBacth, 0);
 	}*/
-	for (size_t i = 0; i < _zombies.size(); i++)
+	for (size_t i = 0; i < _demonios.size(); i++)
 	{
-		_zombies[i]->draw(_spriteBacth, 1);
+		_demonios[i]->draw(_spriteBacth, 1);
 	}
 	for (size_t i = 0; i < _objects.size(); i++)
 	{
@@ -189,7 +189,7 @@ void MainGame::update() {
 		draw();
 		_camera.update();
 		_time += 0.002f;
-		_player->update(_levels[_currentLevel]->getLevelData(),_humans,_zombies);
+		_player->update(_levels[_currentLevel]->getLevelData(),_humans,_demonios);
 		_camera.setPosition(_player->getPosition());
 		/*for (size_t i = 0; i < _humans.size(); i++)
 		{
@@ -205,21 +205,21 @@ void MainGame::update() {
 			}
 		}*/
 
-		for (size_t i = 0; i < _zombies.size(); i++)
+		for (size_t i = 0; i < _demonios.size(); i++)
 		{
 			//_zombies[i]->update(_levels[_currentLevel]->getLevelData(), _humans, _zombies, _player);
-			if (_zombies[i]->collideWithAgent(_player)) {
+			if (_demonios[i]->collideWithAgent(_player)) {
 				_player->resetposition(_levels, _currentLevel);
 
 			}
 
-			_zombies[i]->update(_levels[_currentLevel]->getLevelData(), _humans, _zombies);
+			_demonios[i]->update(_levels[_currentLevel]->getLevelData(), _humans, _demonios);
 			Human* closeHuman = _player;
 			if (closeHuman != nullptr) {
 				glm::vec2 direction = glm::normalize(
-					closeHuman->getPosition() - _zombies[i]->getPosition()
+					closeHuman->getPosition() - _demonios[i]->getPosition()
 				);
-				_zombies[i]->setPosition(_zombies[i]->getPosition() += direction * _zombies[i]->getspeed());
+				_demonios[i]->setPosition(_demonios[i]->getPosition() += direction * _demonios[i]->getspeed());
 			}
 			/*for (size_t j = 0; j < _humans.size(); j++) {
 				if (_zombies[i]->collideWithAgent(_humans[j])) {
@@ -231,26 +231,26 @@ void MainGame::update() {
 			}*/
 			//CADA ZOMBIE VERIFICA SI CHOCÓ CON UN PROYECTIL
 			for (size_t j = 0; j < _proyectiles.size(); j++){
-				if(_zombies[i]->collideWithAgent(_proyectiles[j])){
+				if(_demonios[i]->collideWithAgent(_proyectiles[j])){
 					_proyectiles.erase(_proyectiles.begin() + j);
-					_zombies.erase(_zombies.begin() + i);
+					_demonios.erase(_demonios.begin() + i);
 				}
 			}
 			//CADA ZOMBIE VERIFICA SI CHOCÓ CON OTRO ZOMBIE:
-			for (size_t j = i+1; j < _zombies.size(); j++) {
-				if (_zombies[i]->collideWithAgent(_zombies[j])) {
-						_zombies[i]->randir();
-						_zombies[j]->randir();
+			for (size_t j = i+1; j < _demonios.size(); j++) {
+				if (_demonios[i]->collideWithAgent(_demonios[j])) {
+						_demonios[i]->randir();
+						_demonios[j]->randir();
 				}
 			}
 		}
 		for (size_t i = 0; i < _objects.size(); i++)
 		{
-			_objects[i]->update(_levels[_currentLevel]->getLevelData(), _humans, _zombies);
+			_objects[i]->update(_levels[_currentLevel]->getLevelData(), _humans, _demonios);
 		}
 		for (size_t i = 0; i < _proyectiles.size(); i++)
 		{
-			_proyectiles[i]->update(_levels[_currentLevel]->getLevelData(), _humans, _zombies);
+			_proyectiles[i]->update(_levels[_currentLevel]->getLevelData(), _humans, _demonios);
 			//ELIMINO PROYECTIL SI CHOCA CON LA PARED
 			if(_proyectiles[i]->collideWithLevel(_levels[_currentLevel]->getLevelData())){
 				_proyectiles.erase(_proyectiles.begin() + i);

@@ -2,6 +2,7 @@
 #include "Human.h"
 #include "Level.h"
 #include "InputManager.h"
+#include "Demonio.h"
 class Player : public Human
 {
 private:
@@ -10,7 +11,7 @@ private:
 public:
 	Player();
 	void update(const std::vector<std::string>& levelData,
-		std::vector<Human*>& humans, std::vector<Zombie*>& zombies);
+		std::vector<Human*>& humans, std::vector<Demonio*>& zombies);
 	~Player();
 	void init(float speed, glm::vec2 position, InputManager* inputManager);
 	char getlastkey();

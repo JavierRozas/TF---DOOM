@@ -29,7 +29,7 @@ void Proyectil::init(float speed, glm::vec2 position, char dir){
 }
 
 void Proyectil::update(const std::vector<std::string>& levelData,
-	std::vector<Human*>& humans, std::vector<Zombie*>& zombies) {
+	std::vector<Human*>& humans, std::vector<Demonio*>& zombies) {
 
 	//static std::mt19937 randomEngine(time(nullptr));
 	//static std::uniform_real_distribution<float>randDir(-1.0f, 1.0f);

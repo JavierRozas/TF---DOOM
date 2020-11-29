@@ -10,7 +10,7 @@
 #include "InputManager.h"
 #include "Level.h"
 #include "Player.h"
-#include "Zombie.h"
+#include "Demonio.h"
 #include "Human.h"
 #include "PowerUp.h"
 #include "Proyectil.h"
@@ -37,7 +37,7 @@ private:
 	void procesInput();
 	GLS_Program _program;
 	vector<Sprite*> _sprites;
-	vector<Zombie*> _zombies;
+	vector<Demonio*> _demonios;
 	vector<Human*> _humans;
 	vector<PowerUp*> _objects;
 	vector<Proyectil*> _proyectiles;

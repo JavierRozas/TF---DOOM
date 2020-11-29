@@ -97,7 +97,7 @@ void Agent::draw(SpriteBacth& spriteBatch, int type)
 	switch (type) {
 	case 0: textureID = ResourceManager::getTexture("Textures/player.png").id; break;
 	case 1: textureID = ResourceManager::getTexture("Textures/demonio.png").id; break;
-	case 2: textureID = ResourceManager::getTexture("Textures/power.png").id; break;
+	case 2: textureID = ResourceManager::getTexture("Textures/powerup.png").id; break;
 	case 3: 
 	{
 		textureID = ResourceManager::getTexture("Textures/proyectil.png").id; 

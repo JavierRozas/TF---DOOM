@@ -1,26 +1,26 @@
-#include "Zombie.h"
+#include "Demonio.h"
 #include "Human.h"
 #include <iostream>
 #include <random>
 #include <ctime>
 #include <glm\gtx\rotate_vector.hpp>
 
-Zombie::Zombie() {
+Demonio::Demonio() {
 
 }
 
-Zombie::~Zombie() {
+Demonio::~Demonio() {
 
 }
 
-void Zombie::setPosition(glm::vec2 position) {
+void Demonio::setPosition(glm::vec2 position) {
 	_position = position;
 }
 
 
 
-void Zombie::update(const std::vector<std::string>& levelData,
-	std::vector<Human*>& humans, std::vector<Zombie*>& zombies){
+void Demonio::update(const std::vector<std::string>& levelData,
+	std::vector<Human*>& humans, std::vector<Demonio*>& zombies){
 
 	collideWithLevel(levelData);
 	/*
@@ -54,7 +54,7 @@ void Zombie::update(const std::vector<std::string>& levelData,
 	*/
 }
 
-Human* Zombie::getNearestHuman(std::vector<Human*>& humans) {
+Human* Demonio::getNearestHuman(std::vector<Human*>& humans) {
 	Human* closestHuman = nullptr;
 	float smallestDistance = 8888.0f;
 	for (size_t i = 0; i < humans.size(); i++)
@@ -69,19 +69,19 @@ Human* Zombie::getNearestHuman(std::vector<Human*>& humans) {
 	return closestHuman;
 }
 
-void Zombie::init(float speed, glm::vec2 position) {
+void Demonio::init(float speed, glm::vec2 position) {
 	_speed = speed;
 	_position = position;
 	_life = 1;
 	// _color.set(0, 0, 0, 255);
 }
 
-void Zombie::randir(){
+void Demonio::randir(){
 	static std::mt19937 randomEngine(time(nullptr));
 	static std::uniform_real_distribution<float>randDir(-1.0f, 1.0f);
 	direction = glm::vec2(randDir(randomEngine), randDir(randomEngine));
 }
 
-int Zombie::get_life(){
+int Demonio::get_life(){
 	return _life;
 }

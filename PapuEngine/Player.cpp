@@ -20,7 +20,7 @@ void Player::init(float speed, glm::vec2 position,
 }
 
 void Player::update(const std::vector<std::string>& levelData,
-	std::vector<Human*>& humans, std::vector<Zombie*>& zombies) {
+	std::vector<Human*>& humans, std::vector<Demonio*>& zombies) {
 	if (_inputManager->isKeyPressed(SDLK_w)) {
 		_position.y += _speed;
 		_lastkey = 'w';

@@ -9,7 +9,7 @@ public:
 	Human();
 	~Human();
 	void update(const std::vector<std::string>& levelData,
-		std::vector<Human*>& humans, std::vector<Zombie*>& zombies);
+		std::vector<Human*>& humans, std::vector<Demonio*>& zombies);
 	void setColor();
 	glm::vec2 getPosition();
 	float getspeed();

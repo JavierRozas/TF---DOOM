@@ -146,7 +146,7 @@
     <ClCompile Include="SpriteBacth.cpp" />
     <ClCompile Include="TextureCache.cpp" />
     <ClCompile Include="Window.cpp" />
-    <ClCompile Include="Zombie.cpp" />
+    <ClCompile Include="Demonio.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Agent.h" />
@@ -171,7 +171,7 @@
     <ClInclude Include="TextureCache.h" />
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="Window.h" />
-    <ClInclude Include="Zombie.h" />
+    <ClInclude Include="Demonio.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
