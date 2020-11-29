@@ -27,7 +27,7 @@ void MainGame::initLevel() {
 	_levels.push_back(new Level("Levels/level1.txt"));
 	_player = new Player();
 	_currentLevel = 0;
-	_player->init(1.0f, 
+	_player->init(0.2f, 
 				_levels[_currentLevel]->getPlayerPosition(), &_inputManager);
 	_spriteBacth.init();
 
@@ -54,13 +54,13 @@ void MainGame::initLevel() {
 	for (size_t i = 0; i < zombiesPosition.size(); i++)
 	{	
 		_zombies.push_back(new Zombie());
-		_zombies.back()->init(1.3f, zombiesPosition[i]);
+		_zombies.back()->init(0.05f, zombiesPosition[i]);
 	}
 
 	for (size_t i = 0; i < objectPosition.size(); i++)
 	{
 		_objects.push_back(new PowerUp());
-		_objects.back()->init(1.3f, objectPosition[i]);
+		_objects.back()->init(0.2f, objectPosition[i]);
 	}
 }
 
@@ -172,7 +172,7 @@ void MainGame::procesInput() {
 		if (_inputManager.isKeyPressed(SDLK_x)) {
 			//CREAR BALA E INICIALIZAR
 			_proyectiles.push_back(new Proyectil());
-			_proyectiles.back()->init(5.0f, _player->getPosition(),_player->getlastkey());
+			_proyectiles.back()->init(0.5f, _player->getPosition(),_player->getlastkey());
 		}
 	}
 }
@@ -204,9 +204,18 @@ void MainGame::update() {
 		{
 			//_zombies[i]->update(_levels[_currentLevel]->getLevelData(), _humans, _zombies, _player);
 			if (_zombies[i]->collideWithAgent(_player)) {
-				_zombies[i]->randir();
+				_player->resetposition(_levels, _currentLevel);
+
 			}
+
 			_zombies[i]->update(_levels[_currentLevel]->getLevelData(), _humans, _zombies);
+			Human* closeHuman = _player;
+			if (closeHuman != nullptr) {
+				glm::vec2 direction = glm::normalize(
+					closeHuman->getPosition() - _zombies[i]->getPosition()
+				);
+				_zombies[i]->setPosition(_zombies[i]->getPosition() += direction * _zombies[i]->getspeed());
+			}
 			/*for (size_t j = 0; j < _humans.size(); j++) {
 				if (_zombies[i]->collideWithAgent(_humans[j])) {
 					Zombie* z = new Zombie();

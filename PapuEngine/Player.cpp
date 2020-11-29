@@ -45,3 +45,8 @@ void Player::update(const std::vector<std::string>& levelData,
 char Player::getlastkey(){
 	return _lastkey;
 }
+
+void Player::resetposition(std::vector<Level*> level, int currentLevel)
+{
+	_position = level[currentLevel]->getPlayerPosition();
+}

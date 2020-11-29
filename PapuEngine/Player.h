@@ -1,5 +1,6 @@
 #pragma once
 #include "Human.h"
+#include "Level.h"
 #include "InputManager.h"
 class Player : public Human
 {
@@ -13,5 +14,6 @@ public:
 	~Player();
 	void init(float speed, glm::vec2 position, InputManager* inputManager);
 	char getlastkey();
+	void resetposition(std::vector<Level*> level, int currentLevel);
 };
 

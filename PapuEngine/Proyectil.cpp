@@ -18,9 +18,9 @@ void Proyectil::init(float speed, glm::vec2 position, char dir){
 	//static std::mt19937 randomEngine(time(nullptr));
 	//static std::uniform_real_distribution<float>randDir(-1.0f, 1.0f);
 	switch(dir){
-		case 'w': _direction = glm::vec2(0,-1); break;
+		case 'w': _direction = glm::vec2(0, 1); break;
 		case 'a': _direction = glm::vec2(-1,0); break;
-		case 's': _direction = glm::vec2(0, 1); break;
+		case 's': _direction = glm::vec2(0,-1); break;
 		case 'd': _direction = glm::vec2(1,-0); break;
 	}
 	//if (_direction.length() == 0) {

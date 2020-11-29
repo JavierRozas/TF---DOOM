@@ -12,6 +12,7 @@ public:
 		std::vector<Human*>& humans, std::vector<Zombie*>& zombies);
 	void setColor();
 	glm::vec2 getPosition();
+	float getspeed();
 	void init(float speed, glm::vec2 position);
 	void randir();
 };

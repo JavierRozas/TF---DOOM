@@ -31,5 +31,6 @@ public:
 	glm::vec2 getPosition()const { return _position; }
 	void draw(SpriteBacth& spriteBatch, int type);
 	void draw_zombie(SpriteBacth& spriteBatch);
+	float getspeed();
 };
 

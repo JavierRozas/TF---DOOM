@@ -32,6 +32,11 @@ glm::vec2 Human::getPosition()
 	return _position;
 }
 
+float Human::getspeed()
+{
+	return _speed;
+}
+
 void Human::update(const std::vector<std::string>& levelData,
 	std::vector<Human*>& humans, std::vector<Zombie*>& zombies) {
 	

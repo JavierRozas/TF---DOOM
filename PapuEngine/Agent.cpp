@@ -121,3 +121,8 @@ void Agent::draw_zombie(SpriteBacth& spriteBatch)
 	spriteBatch.draw(destRect, uvRect, textureID, 0.0f, _color);
 }
 
+float Agent::getspeed()
+{
+	return _speed;
+}
+

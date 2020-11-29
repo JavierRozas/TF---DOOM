@@ -1,6 +1,5 @@
 #include "Zombie.h"
 #include "Human.h"
-#include "Player.h"
 #include <iostream>
 #include <random>
 #include <ctime>
@@ -24,22 +23,15 @@ void Zombie::update(const std::vector<std::string>& levelData,
 	std::vector<Human*>& humans, std::vector<Zombie*>& zombies){
 
 	collideWithLevel(levelData);
-	
+	/*
 	Human* closeHuman = getNearestHuman(humans);
 	if (closeHuman != nullptr) {
 		glm::vec2 direction = glm::normalize(
 			closeHuman->getPosition() - _position
 		);
 		_position += direction * _speed;
-	}
-	/*
-	if (_player != nullptr) {
-		glm::vec2 direction = glm::normalize(
-			_player->getPosition() - _position
-		);
-		_position += direction * _speed;
-	}
-*/
+	}*/
+
 	/*
 	// Gestionar colisiones con humanos:
 	for (size_t i = 0; i < humans.size(); i++)
