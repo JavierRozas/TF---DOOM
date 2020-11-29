@@ -29,8 +29,10 @@ void MainGame::initLevel() {
 	_currentLevel = 0;
 	tiempo_recarga_balas = 30;
 	bala_recargando = false;
-	_player->init(1.0f, 
-				_levels[_currentLevel]->getPlayerPosition(), &_inputManager);
+	_player->init(0.2f,
+	_levels[_currentLevel]->getPlayerPosition(), &_inputManager);
+	_player->init(1.2f, 
+	_levels[_currentLevel]->getPlayerPosition(), &_inputManager);
 	_spriteBacth.init();
 
 	// Zombies;
@@ -42,7 +44,7 @@ void MainGame::initLevel() {
 		_levels[_currentLevel]->getObjectPosition();
 
 	std::mt19937 randomEngine(time(nullptr));
-	std::uniform_int_distribution<int>randPosX(1,_levels[_currentLevel]->getWidth() -2);
+	std::uniform_int_distribution<int>randPosX(1, _levels[_currentLevel]->getWidth() - 2);
 	std::uniform_int_distribution<int>randPosY(1, _levels[_currentLevel]->getHeight() - 2);
 	/*
 	for (int i = 0; i < _levels[_currentLevel]->getNumHumans(); i++)
@@ -54,7 +56,7 @@ void MainGame::initLevel() {
 	}*/
 
 	for (size_t i = 0; i < zombiesPosition.size(); i++)
-	{	
+	{
 		_demonios.push_back(new Demonio());
 		_demonios.back()->init(1.0f, zombiesPosition[i]);
 	}
@@ -108,7 +110,7 @@ void MainGame::draw() {
 	{
 		_objects[i]->draw(_spriteBacth, 2);
 	}
-	for (size_t i = 0; i < _proyectiles.size(); i++){
+	for (size_t i = 0; i < _proyectiles.size(); i++) {
 		_proyectiles[i]->draw(_spriteBacth, 3);
 	}
 	_spriteBacth.end();
@@ -129,24 +131,24 @@ void MainGame::procesInput() {
 	{
 		switch (event.type)
 		{
-			case SDL_QUIT:
-				_gameState = GameState::EXIT;
-				break;
-			case SDL_MOUSEMOTION:
-				_inputManager.setMouseCoords(event.motion.x,event.motion.y);
+		case SDL_QUIT:
+			_gameState = GameState::EXIT;
 			break;
-			case  SDL_KEYUP:
-				_inputManager.releaseKey(event.key.keysym.sym);
-				break;
-			case  SDL_KEYDOWN:
-				_inputManager.pressKey(event.key.keysym.sym);
-				break;
-			case SDL_MOUSEBUTTONDOWN:
-				_inputManager.pressKey(event.button.button);
-				break;
-			case SDL_MOUSEBUTTONUP:
-				_inputManager.releaseKey(event.button.button);
-				break;
+		case SDL_MOUSEMOTION:
+			_inputManager.setMouseCoords(event.motion.x, event.motion.y);
+			break;
+		case  SDL_KEYUP:
+			_inputManager.releaseKey(event.key.keysym.sym);
+			break;
+		case  SDL_KEYDOWN:
+			_inputManager.pressKey(event.key.keysym.sym);
+			break;
+		case SDL_MOUSEBUTTONDOWN:
+			_inputManager.pressKey(event.button.button);
+			break;
+		case SDL_MOUSEBUTTONUP:
+			_inputManager.releaseKey(event.button.button);
+			break;
 		}
 
 		/*if (_inputManager.isKeyPressed(SDLK_w)) {
@@ -168,13 +170,14 @@ void MainGame::procesInput() {
 			_camera.setScale(_camera.getScale() - SCALE_SPEED);
 		}
 		if (_inputManager.isKeyPressed(SDL_BUTTON_LEFT)) {
-			glm::vec2 mouseCoords =  _camera.convertScreenToWorl(_inputManager.getMouseCoords());
+			glm::vec2 mouseCoords = _camera.convertScreenToWorl(_inputManager.getMouseCoords());
 			//cout << mouseCoords.x << " " << mouseCoords.y << endl;
 		}
-		if (_inputManager.isKeyPressed(SDLK_x)) {
+		if (_inputManager.isKeyPressed(SDLK_UP) || _inputManager.isKeyPressed(SDLK_DOWN) || _inputManager.isKeyPressed(SDLK_LEFT) || _inputManager.isKeyPressed(SDLK_RIGHT)) {
 			//CREAR BALA E INICIALIZAR
 			if (bala_recargando == false) {
 				_proyectiles.push_back(new Proyectil());
+				_player->update(_levels[_currentLevel]->getLevelData(), _humans, _demonios);
 				_proyectiles.back()->init(2.0f, _player->getPosition(), _player->getlastkey());
 				bala_recargando = true;
 			}
@@ -189,7 +192,7 @@ void MainGame::update() {
 		draw();
 		_camera.update();
 		_time += 0.002f;
-		_player->update(_levels[_currentLevel]->getLevelData(),_humans,_demonios);
+		_player->update(_levels[_currentLevel]->getLevelData(), _humans, _demonios);
 		_camera.setPosition(_player->getPosition());
 		/*for (size_t i = 0; i < _humans.size(); i++)
 		{
@@ -229,19 +232,21 @@ void MainGame::update() {
 					_humans.erase(_humans.begin() + j);
 				}
 			}*/
-			//CADA ZOMBIE VERIFICA SI CHOCÓ CON UN PROYECTIL
-			for (size_t j = 0; j < _proyectiles.size(); j++){
-				if(_demonios[i]->collideWithAgent(_proyectiles[j])){
-					//RESTAR VIDA 
+			//CADA ZOMBIE VERIFICA SI CHOCÃ“ CON UN PROYECTIL
+			for (size_t j = 0; j < _proyectiles.size(); j++) {
+				if (_demonios[i]->collideWithAgent(_proyectiles[j])) {
+					_demonios[i]->inflict(_player->get_daÃ±o());
+					if (_demonios[i]->get_life() <= 0) {
+						_demonios.erase(_demonios.begin() + i);
+					}
 					_proyectiles.erase(_proyectiles.begin() + j);
-					_demonios.erase(_demonios.begin() + i);
 				}
 			}
-			//CADA ZOMBIE VERIFICA SI CHOCÓ CON OTRO ZOMBIE:
-			for (size_t j = i+1; j < _demonios.size(); j++) {
+			//CADA ZOMBIE VERIFICA SI CHOCÃ“ CON OTRO ZOMBIE:
+			for (size_t j = i + 1; j < _demonios.size(); j++) {
 				if (_demonios[i]->collideWithAgent(_demonios[j])) {
-						_demonios[i]->randir();
-						_demonios[j]->randir();
+					_demonios[i]->randir();
+					_demonios[j]->randir();
 				}
 			}
 		}
@@ -257,10 +262,10 @@ void MainGame::update() {
 		{
 			_proyectiles[i]->update(_levels[_currentLevel]->getLevelData(), _humans, _demonios);
 			//ELIMINO PROYECTIL SI CHOCA CON LA PARED
-			if(_proyectiles[i]->collideWithLevel(_levels[_currentLevel]->getLevelData())){
+			if (_proyectiles[i]->collideWithLevel(_levels[_currentLevel]->getLevelData())) {
 				_proyectiles.erase(_proyectiles.begin() + i);
 			}
-		}		
+		}
 
 		//RECARGA DE BALA
 		if (bala_recargando == true) {
@@ -274,11 +279,11 @@ void MainGame::update() {
 }
 
 
-MainGame::MainGame(): 
-					  _witdh(800),
-					  _height(600),
-					  _gameState(GameState::PLAY),
-					  _time(0)
+MainGame::MainGame() :
+	_witdh(800),
+	_height(600),
+	_gameState(GameState::PLAY),
+	_time(0)
 {
 	_camera.init(_witdh, _height);
 }
