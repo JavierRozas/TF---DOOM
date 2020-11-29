@@ -95,8 +95,8 @@ void Agent::draw(SpriteBacth& spriteBatch, int type)
 	int w = 0;
 	int h = 0;
 	switch (type) {
-	case 0: textureID = ResourceManager::getTexture("Textures/human.png").id; break;
-	case 1: textureID = ResourceManager::getTexture("Textures/zombie.png").id; break;
+	case 0: textureID = ResourceManager::getTexture("Textures/player.png").id; break;
+	case 1: textureID = ResourceManager::getTexture("Textures/demonio.png").id; break;
 	case 2: textureID = ResourceManager::getTexture("Textures/power.png").id; break;
 	case 3: 
 	{
@@ -115,7 +115,7 @@ void Agent::draw(SpriteBacth& spriteBatch, int type)
 void Agent::draw_zombie(SpriteBacth& spriteBatch)
 {
 	static int textureID =
-		ResourceManager::getTexture("Textures/zombie.png").id;
+		ResourceManager::getTexture("Textures/demonio.png").id;
 	const glm::vec4 uvRect(0.0f, 0.0f, 1.0f, 1.0f);
 	glm::vec4 destRect(_position.x, _position.y, AGENT_WIDTH, AGENT_WIDTH);
 	spriteBatch.draw(destRect, uvRect, textureID, 0.0f, _color);

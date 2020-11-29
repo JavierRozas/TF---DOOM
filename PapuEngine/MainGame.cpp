@@ -27,6 +27,8 @@ void MainGame::initLevel() {
 	_levels.push_back(new Level("Levels/level1.txt"));
 	_player = new Player();
 	_currentLevel = 0;
+	tiempo_recarga_balas = 150;
+	bala_recargando = false;
 	_player->init(0.2f, 
 				_levels[_currentLevel]->getPlayerPosition(), &_inputManager);
 	_spriteBacth.init();
@@ -171,8 +173,11 @@ void MainGame::procesInput() {
 		}
 		if (_inputManager.isKeyPressed(SDLK_x)) {
 			//CREAR BALA E INICIALIZAR
-			_proyectiles.push_back(new Proyectil());
-			_proyectiles.back()->init(0.5f, _player->getPosition(),_player->getlastkey());
+			if (bala_recargando == false) {
+				_proyectiles.push_back(new Proyectil());
+				_proyectiles.back()->init(0.5f, _player->getPosition(), _player->getlastkey());
+				bala_recargando = true;
+			}
 		}
 	}
 }
@@ -251,6 +256,15 @@ void MainGame::update() {
 				_proyectiles.erase(_proyectiles.begin() + i);
 			}
 		}		
+
+		//RECARGA DE BALA
+		if (bala_recargando == true) {
+			tiempo_recarga_balas = tiempo_recarga_balas - 1;
+			if (tiempo_recarga_balas < 0) {
+				tiempo_recarga_balas = 150;
+				bala_recargando = false;
+			}
+		}
 	}
 }
 
