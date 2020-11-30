@@ -28,6 +28,10 @@ void MainGame::init() {
 	initLevel();
 }
 
+void MainGame::addMusic(const char *song) {
+	PlaySound(song, NULL, SND_ASYNC);
+}
+
 void MainGame::initLevel() {
 	_levels.push_back(new Level("Levels/level1.txt"));
 	_player = new Player();
@@ -213,7 +217,9 @@ void MainGame::procesInput() {
 				_player->update(_levels[_currentLevel]->getLevelData());
 				_proyectiles.back()->init(2.0f, _player->getPosition(), _player->getlastkey());
 				bala_recargando = true;
-				PlaySound("disparo_1.wav", NULL, SND_ASYNC);
+
+				// Agregar Sonido:
+				addMusic("disparo_1.wav");
 			}
 		}
 	}
@@ -247,6 +253,7 @@ void MainGame::update() {
 		{
 			//strongdemons[i]->update(_levels[_currentLevel]->getLevelData(), _humans, strongdemons, _player);
 			if (strongdemons[i]->collideWithAgent(_player)) {
+				addMusic("ataque.wav");
 				if (_player->get_vida() == 0) {
 					this->initLevel();
 					_player->set_vida(500);
@@ -254,7 +261,6 @@ void MainGame::update() {
 				else {
 					_player->set_vida(_player->get_vida() - 1);
 				}
-
 			}
 
 			strongdemons[i]->update(_levels[_currentLevel]->getLevelData());
@@ -314,6 +320,7 @@ void MainGame::update() {
 		{
 			//strongdemons[i]->update(_levels[_currentLevel]->getLevelData(), _humans, strongdemons, _player);
 			if (meddemons[i]->collideWithAgent(_player)) {
+				addMusic("ataque.wav");
 				if (_player->get_vida() == 0) {
 					this->initLevel();
 					_player->set_vida(500);
@@ -321,7 +328,6 @@ void MainGame::update() {
 				else {
 					_player->set_vida(_player->get_vida() - 1);
 				}
-
 			}
 
 			meddemons[i]->update(_levels[_currentLevel]->getLevelData());
@@ -382,6 +388,7 @@ void MainGame::update() {
 		{
 			//strongdemons[i]->update(_levels[_currentLevel]->getLevelData(), _humans, strongdemons, _player);
 			if (lowdemons[i]->collideWithAgent(_player)) {
+				addMusic("ataque.wav");
 				if (_player->get_vida() == 0) {
 					this->initLevel();
 					_player->set_vida(500);
@@ -389,7 +396,6 @@ void MainGame::update() {
 				else {
 					_player->set_vida(_player->get_vida() - 1);
 				}
-
 			}
 
 			lowdemons[i]->update(_levels[_currentLevel]->getLevelData());
@@ -452,7 +458,7 @@ void MainGame::update() {
 			if (_objects[i]->collideWithAgent(_player)) {
 				_objects.erase(_objects.begin() + i);
 				_player->boost();
-				PlaySound("power.wav", NULL, SND_ASYNC);
+				addMusic("power.wav");
 			}
 		}
 		for (size_t i = 0; i < _proyectiles.size(); i++)
