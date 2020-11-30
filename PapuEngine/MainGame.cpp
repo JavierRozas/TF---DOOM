@@ -269,7 +269,7 @@ void MainGame::update() {
 			//strongdemons[i]->update(_levels[_currentLevel]->getLevelData(), _humans, strongdemons, _player);
 			if (strongdemons[i]->collideWithAgent(_player)) {
 				addMusic("ataque.wav");
-				if (_player->get_vida() == 0) {
+				if (_player->get_vida() <= 0) {
 					this->initLevel();
 					_player->set_vida(10);
 				}
@@ -342,7 +342,7 @@ void MainGame::update() {
 			//strongdemons[i]->update(_levels[_currentLevel]->getLevelData(), _humans, strongdemons, _player);
 			if (meddemons[i]->collideWithAgent(_player)) {
 				addMusic("ataque.wav");
-				if (_player->get_vida() == 0) {
+				if (_player->get_vida() <= 0) {
 					this->initLevel();
 					_player->set_vida(10);
 				}
@@ -416,7 +416,7 @@ void MainGame::update() {
 			//strongdemons[i]->update(_levels[_currentLevel]->getLevelData(), _humans, strongdemons, _player);
 			if (lowdemons[i]->collideWithAgent(_player)) {
 				addMusic("ataque.wav");
-				if (_player->get_vida() == 0) {
+				if (_player->get_vida() <= 0) {
 					this->initLevel();
 					_player->set_vida(10);
 				}
