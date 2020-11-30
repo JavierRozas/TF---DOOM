@@ -9,6 +9,7 @@ private:
 	InputManager* _inputManager;
 	char _lastkey;
 	int danio;
+	int vida;
 public:
 	Player();
 	void update(const std::vector<std::string>& levelData,
@@ -19,5 +20,7 @@ public:
 	void resetposition(std::vector<Level*> level, int currentLevel);
 	void boost();
 	int get_danio();
+	int get_vida();
+	void set_vida(int vida);
 };
 

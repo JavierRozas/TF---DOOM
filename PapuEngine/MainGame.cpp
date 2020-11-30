@@ -212,7 +212,13 @@ void MainGame::update() {
 		{
 			//_demonios[i]->update(_levels[_currentLevel]->getLevelData(), _humans, _demonios, _player);
 			if (_demonios[i]->collideWithAgent(_player)) {
-				_player->resetposition(_levels, _currentLevel);
+				if (_player->get_vida() == 0) {
+					_player->resetposition(_levels, _currentLevel);
+					_player->set_vida(500);
+				}
+				else {
+					_player->set_vida(_player->get_vida() - 1);
+				}
 
 			}
 
@@ -237,7 +243,7 @@ void MainGame::update() {
 					_humans.erase(_humans.begin() + j);
 				}
 			}*/
-			//CADA ZOMBIE VERIFICA SI CHOCÓ CON UN PROYECTIL
+			//CADA DEMONIO VERIFICA SI CHOCÓ CON UN PROYECTIL
 			for (size_t j = 0; j < _proyectiles.size(); j++) {
 				if (_demonios[i]->collideWithAgent(_proyectiles[j])) {
 					_demonios[i]->inflict(_player->get_danio());
@@ -247,7 +253,7 @@ void MainGame::update() {
 					_proyectiles.erase(_proyectiles.begin() + j);
 				}
 			}
-			//CADA ZOMBIE VERIFICA SI CHOCÓ CON OTRO ZOMBIE:
+			//CADA DEMONIO VERIFICA SI CHOCÓ CON OTRO DEMONIO:
 			for (size_t j = i + 1; j < _demonios.size(); j++) {
 				if (_demonios[i]->collideWithAgent(_demonios[j])) {
 					_demonios[i]->randir();

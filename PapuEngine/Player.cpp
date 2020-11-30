@@ -21,6 +21,7 @@ void Player::init(float speed, glm::vec2 position,
 	_inputManager = inputManager;
 	_lastkey = 'w';
 	danio = 1;
+	vida = 500;
 }
 
 void Player::update(const std::vector<std::string>& levelData,
@@ -75,3 +76,14 @@ void Player::boost() {
 int Player::get_danio() {
 	return danio;
 }
+
+int Player::get_vida()
+{
+	return vida;
+}
+
+void Player::set_vida(int vida)
+{
+	this->vida = vida;
+}
+
