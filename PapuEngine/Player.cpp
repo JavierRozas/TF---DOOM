@@ -28,8 +28,7 @@ void Player::init(float speed, glm::vec2 position,
 	boosttime = 1000;
 }
 
-void Player::update(const std::vector<std::string>& levelData,
-	std::vector<Human*>& humans, std::vector<Demonio*>& zombies) {
+void Player::update(const std::vector<std::string>& levelData) {
 	if (_inputManager->isKeyPressed(SDLK_w)) {
 		_position.y += _speed;
 	}

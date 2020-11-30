@@ -13,7 +13,9 @@ private:
 	void parseLevel();
 public:
 	glm::vec2 playerPosition;
-	vector<glm::vec2> zombiePosition;
+	vector<glm::vec2> sdemonioPosition;
+	vector<glm::vec2> mdemonioPosition;
+	vector<glm::vec2> ldemonioPosition;
 	vector<glm::vec2> objectPosition;
 	int getNumHumans()const {
 		return numHumans;
@@ -31,8 +33,14 @@ public:
 	glm::vec2 getPlayerPosition() const {
 		return playerPosition;
 	}
-	std::vector<glm::vec2> getZombiesPosition()const {
-		return zombiePosition;
+	std::vector<glm::vec2> getMDemoniosPosition()const {
+		return mdemonioPosition;
+	}
+	std::vector<glm::vec2> getSDemoniosPosition()const {
+		return sdemonioPosition;
+	}
+	std::vector<glm::vec2> getLDemoniosPosition()const {
+		return ldemonioPosition;
 	}
 	std::vector<glm::vec2> getObjectPosition()const {
 		return objectPosition;

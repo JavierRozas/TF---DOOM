@@ -1,9 +1,8 @@
 #pragma once
-#include "Human.h"
 #include "Level.h"
 #include "InputManager.h"
 #include "Demonio.h"
-class Player : public Human
+class Player : public Agent
 {
 private:
 	InputManager* _inputManager;
@@ -16,8 +15,7 @@ private:
 	int boosttime;
 public:
 	Player();
-	void update(const std::vector<std::string>& levelData,
-		std::vector<Human*>& humans, std::vector<Demonio*>& zombies);
+	void update(const std::vector<std::string>& levelData);
 	~Player();
 	void init(float speed, glm::vec2 position, InputManager* inputManager);
 	char getlastkey();

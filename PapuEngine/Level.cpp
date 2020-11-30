@@ -72,7 +72,15 @@ void Level::parseLevel() {
 				break;
 			case 'Z':
 				levelData[y][x] = '.';
-				zombiePosition.emplace_back(x * TILE_WIDTH, y * TILE_WIDTH);
+				ldemonioPosition.emplace_back(x * TILE_WIDTH, y * TILE_WIDTH);
+				break;
+			case 'J':
+				levelData[y][x] = '.';
+				mdemonioPosition.emplace_back(x * TILE_WIDTH, y * TILE_WIDTH);
+				break;
+			case 'K':
+				levelData[y][x] = '.';
+				sdemonioPosition.emplace_back(x * TILE_WIDTH, y * TILE_WIDTH);
 				break;
 			case '.':
 				break;

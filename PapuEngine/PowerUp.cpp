@@ -1,6 +1,5 @@
 #include "PowerUp.h"
 #include "Demonio.h"
-#include "Human.h"
 #include <random>
 #include <ctime>
 #include <glm\gtx\rotate_vector.hpp>
@@ -34,27 +33,13 @@ glm::vec2 PowerUp::getPosition()
 	return _position;
 }
 
-void PowerUp::update(const std::vector<std::string>& levelData,
-	std::vector<Human*>& humans, std::vector<Demonio*>& zombies) {
+void PowerUp::update(const std::vector<std::string>& levelData) {
 
 	static std::mt19937 randomEngine(time(nullptr));
 	static std::uniform_real_distribution<float>randDir(-1.0f, 1.0f);
 	//_position += _direction * _speed;
 	if (collideWithLevel(levelData)) {
 		_direction = glm::vec2(randDir(randomEngine), randDir(randomEngine));
-	}
-
-	// Colision con un 'PowerUp':
-	for (size_t i = 0; i < humans.size(); i++)
-	{
-
-		// Verificar si hay colision:
-		if (collideWithAgent(humans[i]))
-		{
-			// humans[i]->setColor();
-			// Eliminar Humano del arreglo 'humans'
-			humans.erase(humans.begin() + i);
-		}
 	}
 
 }

@@ -1,5 +1,4 @@
 #include "Demonio.h"
-#include "Human.h"
 #include <iostream>
 #include <random>
 #include <ctime>
@@ -19,8 +18,7 @@ void Demonio::setPosition(glm::vec2 position) {
 
 
 
-void Demonio::update(const std::vector<std::string>& levelData,
-	std::vector<Human*>& humans, std::vector<Demonio*>& zombies) {
+void Demonio::update(const std::vector<std::string>& levelData) {
 
 	collideWithLevel(levelData);
 	/*

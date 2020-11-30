@@ -10,10 +10,11 @@
 #include "InputManager.h"
 #include "Level.h"
 #include "Player.h"
-#include "Demonio.h"
-#include "Human.h"
 #include "PowerUp.h"
 #include "Proyectil.h"
+#include "StrongDemon.h"
+#include "MedDemon.h"
+#include "LowDemon.h"
 
 enum class GameState
 {
@@ -37,8 +38,9 @@ private:
 	void procesInput();
 	GLS_Program _program;
 	vector<Sprite*> _sprites;
-	vector<Demonio*> _demonios;
-	vector<Human*> _humans;
+	vector<StrongDemon*> strongdemons;
+	vector<MedDemon*> meddemons;
+	vector<LowDemon*> lowdemons;
 	vector<PowerUp*> _objects;
 	vector<Proyectil*> _proyectiles;
 	Camera2D _camera;

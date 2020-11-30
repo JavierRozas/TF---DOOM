@@ -129,13 +129,14 @@
     <ClCompile Include="Camera2D.cpp" />
     <ClCompile Include="Error.cpp" />
     <ClCompile Include="GLS_Program.cpp" />
-    <ClCompile Include="Human.cpp" />
     <ClCompile Include="ImageLoader.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="IOManager.cpp" />
     <ClCompile Include="Level.cpp" />
+    <ClCompile Include="LowDemon.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainGame.cpp" />
+    <ClCompile Include="MedDemon.cpp" />
     <ClCompile Include="PapuEngine.cpp" />
     <ClCompile Include="picoPNG.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -144,6 +145,7 @@
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteBacth.cpp" />
+    <ClCompile Include="StrongDemon.cpp" />
     <ClCompile Include="TextureCache.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="Demonio.cpp" />
@@ -154,12 +156,13 @@
     <ClInclude Include="Error.h" />
     <ClInclude Include="GLS_Program.h" />
     <ClInclude Include="GLTexture.h" />
-    <ClInclude Include="Human.h" />
     <ClInclude Include="ImageLoader.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="IOManager.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="LowDemon.h" />
     <ClInclude Include="MainGame.h" />
+    <ClInclude Include="MedDemon.h" />
     <ClInclude Include="PapuEngine.h" />
     <ClInclude Include="picoPNG.h" />
     <ClInclude Include="Player.h" />
@@ -168,6 +171,7 @@
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteBacth.h" />
+    <ClInclude Include="StrongDemon.h" />
     <ClInclude Include="TextureCache.h" />
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="Window.h" />

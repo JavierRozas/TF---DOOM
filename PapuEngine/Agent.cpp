@@ -96,7 +96,7 @@ void Agent::draw(SpriteBacth& spriteBatch, int type)
 	int h = 0;
 	switch (type) {
 	case 0: textureID = ResourceManager::getTexture("Textures/player.png").id; break;
-	case 1: textureID = ResourceManager::getTexture("Textures/demonio.png").id; break;
+	case 1: textureID = ResourceManager::getTexture("Textures/strongdemon.png").id; break;
 	case 2: textureID = ResourceManager::getTexture("Textures/powerup.png").id; break;
 	case 3:
 	{
@@ -106,7 +106,9 @@ void Agent::draw(SpriteBacth& spriteBatch, int type)
 	}
 	case 4: textureID = ResourceManager::getTexture("Textures/boostp.png").id; break;
 	case 5: textureID = ResourceManager::getTexture("Textures/boostb.png").id; break;
-	case 6: break;
+	case 6: textureID = ResourceManager::getTexture("Textures/meddemon.png").id; break;
+	case 7: textureID = ResourceManager::getTexture("Textures/demonio.png").id; break;
+	case 8: break;
 	}
 	const glm::vec4 uvRect(0.0f, 0.0f, 1.0f, 1.0f);
 	if (type == 3) {

@@ -27,12 +27,12 @@ R..L.......LLLL..LLLLLLL..LLLLLLLL.LLLL...B..........RRRRR..B..............G..B.
 R..L..Z....G.......L......Z...L.......G...B...RRRRR......R..B....BBGGBL..LBGGBB......L.....B.....B...R..RRRRR..R
 RLLLLLL..O.L..Z....L....O.....L.......L.....O.........BBBBBBBBBBBB.......L...B...LLLLL..RR....BBBB...R.......Z.R
 R..........LLLL.LLLLLLLL..LLLLLLLL..LLL...B..RRR.RRR.........R....O..R...L.........LL......B..Z....RRRRLBBB....R
-R...RRRRR............O.....L.....R........B..R.....RRRRRR....RRRRRR..RRRRL..RRRRRRRLL..RR..B..............B....R
+R.J.RRRRR............O.....L.....R........B..R.....RRRRRR....RRRRRR..RRRRL..RRRRRRRLL..RR..B..............B....R
 R....O..R..G...R..RRRRRR...L.....R...RRRRRB....O...R....R....R.......R............R.....R..LLGGG....RRRRR.BBBB.R
-R..........R...O...R......Z......Z..Z..RR..........R.......R....B.....O.....R..B..R.........RRR...R.Z......R...R
+R....J...K.R...O...R......Z......Z..Z..RR..........R.......R....B.....O.....R..B..R.........RRR...R.Z......R...R
 R.@....RR..R..L...RR....LLLL.....LLLL..Z....RRRRR........RRR....B......BBB..R..B.RR.RRR.......R...R...RRR..Z...R
 R..LL......R..L.R.Z...O.L....RRR...Z...RR.......R...RRRRRR...R..BBR..RRR....R........B......RRR.....Z...R..RRRRR
-R......RR..R....R..R....L..Z......RR....LRR..Z..R...R...O....B...........O..R.BBBLG..B.GGGG...BBBLG.BBBLG..R...R
+R...K..RR..R....R..R....L..Z......RR....LRR..Z..R...R...O....B...........O..R.BBBLG..B.GGGG...BBBLG.BBBLG..R...R
 RRR..L..R..O..RGRGRRR...L.RRRRRGGRRRRRZ..Z....RRR......LGGLBBBBLGGLBBBBLGG..R........B.R........Z.......R......R
 R..O.L..RR....R.Z...R.Z...G.Z....Z...L...R....R..RR.Z..L.O..B...G............RRR..BBBGBBGBBGB..BBGBBGBBGBBB....R
 R....L...O..R.R.....L..R..L...LLLLL..Z...R....R..Z.....G....B...G....B.BB.G...R....B...O...................B...R

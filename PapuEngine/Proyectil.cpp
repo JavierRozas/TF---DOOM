@@ -1,5 +1,4 @@
 #include <iostream>
-#include "Human.h"
 #include "Proyectil.h"
 #include "Agent.h"
 #include <glm\gtx\rotate_vector.hpp>
@@ -43,8 +42,7 @@ bool Proyectil::specialcollide(const std::vector<std::string>& levelData)
 	return true;
 }
 
-void Proyectil::update(const std::vector<std::string>& levelData,
-	std::vector<Human*>& humans, std::vector<Demonio*>& zombies) {
+void Proyectil::update(const std::vector<std::string>& levelData) {
 
 	//static std::mt19937 randomEngine(time(nullptr));
 	//static std::uniform_real_distribution<float>randDir(-1.0f, 1.0f);

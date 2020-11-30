@@ -23,8 +23,7 @@ protected:
 
 public:
 	Agent();
-	virtual void update(const std::vector<std::string>& levelData,
-		std::vector<Human*>& humans, std::vector<Demonio*>& zombies) = 0;
+	virtual void update(const std::vector<std::string>& levelData) = 0;
 	virtual ~Agent();
 	bool collideWithLevel(const std::vector<std::string>& levelData);
 	bool collideWithAgent(Agent* agent);
