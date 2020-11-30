@@ -7,6 +7,9 @@ class Demonio : public Agent
 protected:
 	glm::vec2 direction;
 	int _life;
+	bool atackin;
+	int atacktime;
+	int danio;
 public:
 	Demonio();
 	~Demonio();
@@ -17,5 +20,9 @@ public:
 	void randir();
 	int get_life();
 	void inflict(int i);
+	bool getatackin();
+	void setatackin(bool _atackin);
+	void atacando();
+	int getdanio();
 };
 
