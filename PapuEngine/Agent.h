@@ -19,12 +19,12 @@ protected:
 	void checkTilePosition(const std::vector<std::string>& levelData,
 		std::vector<glm::vec2>& collidePosition, float x, float y);
 	void collidWithTile(glm::vec2 tilePos);
-	
-	
+
+
 public:
 	Agent();
 	virtual void update(const std::vector<std::string>& levelData,
-					std::vector<Human*>& humans, std::vector<Demonio*>& zombies) = 0;
+		std::vector<Human*>& humans, std::vector<Demonio*>& zombies) = 0;
 	virtual ~Agent();
 	bool collideWithLevel(const std::vector<std::string>& levelData);
 	bool collideWithAgent(Agent* agent);

@@ -8,7 +8,7 @@ class Player : public Human
 private:
 	InputManager* _inputManager;
 	char _lastkey;
-	int daño;
+	int danio;
 public:
 	Player();
 	void update(const std::vector<std::string>& levelData,
@@ -18,5 +18,6 @@ public:
 	char getlastkey();
 	void resetposition(std::vector<Level*> level, int currentLevel);
 	void boost();
+	int get_danio();
 };
 

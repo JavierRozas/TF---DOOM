@@ -8,14 +8,14 @@
 void Agent::checkTilePosition(const std::vector<std::string>& levelData, std::vector<glm::vec2>& collidePosition, float x, float y)
 {
 	glm::vec2 cornerPos = glm::vec2(floor(x / (float)TILE_WIDTH)
-						, floor(y / (float)TILE_WIDTH));
+		, floor(y / (float)TILE_WIDTH));
 	if (cornerPos.x < 0 || cornerPos.x >= levelData[0].size() ||
 		cornerPos.y < 0 || cornerPos.y >= levelData.size()) {
 		return;
 	}
 	if (levelData[cornerPos.y][cornerPos.x] != '.') {
-		collidePosition.push_back(cornerPos * (float)TILE_WIDTH 
-							+ glm::vec2((float)TILE_WIDTH / 2.0f));
+		collidePosition.push_back(cornerPos * (float)TILE_WIDTH
+			+ glm::vec2((float)TILE_WIDTH / 2.0f));
 	}
 }
 
@@ -29,7 +29,7 @@ void Agent::collidWithTile(glm::vec2 tilePos)
 	float xdepth = MIN_DISTANCE - abs(distVec.x);
 	float ydepth = MIN_DISTANCE - abs(distVec.y);
 	if (xdepth > 0 || ydepth > 0) {
-		if (std::max(xdepth,0.0f) < std::max(ydepth,0.0f)) {
+		if (std::max(xdepth, 0.0f) < std::max(ydepth, 0.0f)) {
 			if (distVec.x < 0) {
 				_position.x -= xdepth;
 			}
@@ -61,7 +61,7 @@ bool Agent::collideWithLevel(const std::vector<std::string>& levelData)
 	std::vector<glm::vec2> collideTilePosition;
 	checkTilePosition(levelData, collideTilePosition, _position.x, _position.y);
 	checkTilePosition(levelData, collideTilePosition, _position.x + AGENT_WIDTH, _position.y);
-	checkTilePosition(levelData, collideTilePosition, _position.x, _position.y+ AGENT_WIDTH);
+	checkTilePosition(levelData, collideTilePosition, _position.x, _position.y + AGENT_WIDTH);
 	checkTilePosition(levelData, collideTilePosition, _position.x + AGENT_WIDTH, _position.y + AGENT_WIDTH);
 	if (collideTilePosition.size() == 0) return false;
 	for (size_t i = 0; i < collideTilePosition.size(); i++)
@@ -98,17 +98,17 @@ void Agent::draw(SpriteBacth& spriteBatch, int type)
 	case 0: textureID = ResourceManager::getTexture("Textures/player.png").id; break;
 	case 1: textureID = ResourceManager::getTexture("Textures/demonio.png").id; break;
 	case 2: textureID = ResourceManager::getTexture("Textures/powerup.png").id; break;
-	case 3: 
+	case 3:
 	{
-		textureID = ResourceManager::getTexture("Textures/proyectil.png").id; 
-		w = h = 40;  
+		textureID = ResourceManager::getTexture("Textures/proyectil.png").id;
+		w = h = 40;
 		break;
 	}
 	case 4: break;
 	}
 	const glm::vec4 uvRect(0.0f, 0.0f, 1.0f, 1.0f);
 	if (type == 3) {
-		glm::vec4 destRect(_position.x+25, _position.y+25, AGENT_WIDTH - w, AGENT_WIDTH - h);
+		glm::vec4 destRect(_position.x + 25, _position.y + 25, AGENT_WIDTH - w, AGENT_WIDTH - h);
 		spriteBatch.draw(destRect, uvRect, textureID, 0.0f, _color);
 	}
 	else {
@@ -116,7 +116,7 @@ void Agent::draw(SpriteBacth& spriteBatch, int type)
 		spriteBatch.draw(destRect, uvRect, textureID, 0.0f, _color);
 	}
 
-	
+
 
 }
 

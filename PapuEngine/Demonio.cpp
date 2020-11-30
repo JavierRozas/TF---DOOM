@@ -20,7 +20,7 @@ void Demonio::setPosition(glm::vec2 position) {
 
 
 void Demonio::update(const std::vector<std::string>& levelData,
-	std::vector<Human*>& humans, std::vector<Demonio*>& zombies){
+	std::vector<Human*>& humans, std::vector<Demonio*>& zombies) {
 
 	collideWithLevel(levelData);
 	/*
@@ -46,7 +46,7 @@ void Demonio::update(const std::vector<std::string>& levelData,
 			zom->init(0.8888f, humans[i]->getPosition());
 			// Agregar Zombie al arreglo 'zombies'
 			zombies.push_back(zom);
-			
+
 			// Eliminar Humano del arreglo 'humans'
 			humans.erase(humans.begin() + i);
 		}
@@ -76,13 +76,13 @@ void Demonio::init(float speed, glm::vec2 position) {
 	// _color.set(0, 0, 0, 255);
 }
 
-void Demonio::randir(){
+void Demonio::randir() {
 	static std::mt19937 randomEngine(time(nullptr));
 	static std::uniform_real_distribution<float>randDir(-1.0f, 1.0f);
 	direction = glm::vec2(randDir(randomEngine), randDir(randomEngine));
 }
 
-int Demonio::get_life(){
+int Demonio::get_life() {
 	return _life;
 }
 

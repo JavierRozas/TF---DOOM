@@ -6,7 +6,7 @@ class Proyectil : public Agent
 protected:
 	glm::vec2 _direction;
 public:
-    Proyectil();
+	Proyectil();
 	~Proyectil();
 	void update(const std::vector<std::string>& levelData,
 		std::vector<Human*>& humans, std::vector<Demonio*>& zombies);

@@ -30,9 +30,9 @@ void MainGame::initLevel() {
 	tiempo_recarga_balas = 30;
 	bala_recargando = false;
 	_player->init(0.2f,
-	_levels[_currentLevel]->getPlayerPosition(), &_inputManager);
-	_player->init(1.2f, 
-	_levels[_currentLevel]->getPlayerPosition(), &_inputManager);
+		_levels[_currentLevel]->getPlayerPosition(), &_inputManager);
+	_player->init(1.2f,
+		_levels[_currentLevel]->getPlayerPosition(), &_inputManager);
 	_spriteBacth.init();
 
 	// Zombies;
@@ -240,7 +240,7 @@ void MainGame::update() {
 			//CADA ZOMBIE VERIFICA SI CHOCÓ CON UN PROYECTIL
 			for (size_t j = 0; j < _proyectiles.size(); j++) {
 				if (_demonios[i]->collideWithAgent(_proyectiles[j])) {
-					_demonios[i]->inflict(_player->get_daño());
+					_demonios[i]->inflict(_player->get_danio());
 					if (_demonios[i]->get_life() <= 0) {
 						_demonios.erase(_demonios.begin() + i);
 					}

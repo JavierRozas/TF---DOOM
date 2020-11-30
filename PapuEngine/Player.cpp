@@ -12,7 +12,7 @@ Player::~Player()
 {
 }
 
-void Player::init(float speed, glm::vec2 position, 
+void Player::init(float speed, glm::vec2 position,
 	InputManager* inputManager)
 {
 	_speed = speed;
@@ -20,7 +20,7 @@ void Player::init(float speed, glm::vec2 position,
 	_color.set(255, 255, 255, 255);
 	_inputManager = inputManager;
 	_lastkey = 'w';
-	daño = 1;
+	danio = 1;
 }
 
 void Player::update(const std::vector<std::string>& levelData,
@@ -54,7 +54,7 @@ void Player::update(const std::vector<std::string>& levelData,
 	//collideWithAgent(zombies.get_allocator);
 }
 
-char Player::getlastkey(){
+char Player::getlastkey() {
 	return _lastkey;
 }
 
@@ -63,18 +63,15 @@ void Player::resetposition(std::vector<Level*> level, int currentLevel)
 	_position = level[currentLevel]->getPlayerPosition();
 }
 
-void Player::boost()
-{
+void Player::boost() {
 	srand(time(0));
 	int r = rand() % (2);
 	switch (r) {
-	case 0: _speed += 0.3;
-	case 1: daño += 2;
+	case 0: _speed += 0.3; break;
+	case 1: danio += 2; break;
 	}
-
 }
 
-int Player::get_daño()
-{
-	return daño;
+int Player::get_danio() {
+	return danio;
 }
