@@ -13,6 +13,7 @@ int main(int argc,char** argv) {
 
 	PlaySound(TEXT("song.wav"), NULL, SND_FILENAME | SND_ASYNC);
 
+	cout << " " << endl;
 	cout << "\033[1;31m**********************************************\033[0m\n" << endl;
 	cout << "\033[1;31m****************DOOM ETERNAL******************\033[0m\n" << endl;
 	cout << "\033[1;31m**********************************************\033[0m\n";
