@@ -38,7 +38,7 @@ void MainGame::initLevel() {
 	_currentLevel = 0;
 	tiempo_recarga_balas = 30;
 	bala_recargando = false;
-	_player->init(1.2f,
+	_player->init(2.0f,
 		_levels[_currentLevel]->getPlayerPosition(), &_inputManager);
 	_spriteBacth.init();
 
@@ -230,7 +230,7 @@ void MainGame::procesInput() {
 			if (bala_recargando == false) {
 				_proyectiles.push_back(new Proyectil());
 				_player->update(_levels[_currentLevel]->getLevelData());
-				_proyectiles.back()->init(2.0f, _player->getPosition(), _player->getlastkey());
+				_proyectiles.back()->init(4.0f, _player->getPosition(), _player->getlastkey());
 				bala_recargando = true;
 
 				// Agregar Sonido:

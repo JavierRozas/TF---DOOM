@@ -113,7 +113,7 @@ void Player::desgastarboost()
 		if (boosttime < 0) {
 			boosttime = 500;
 			boosted = false;
-			_speed = 1.2f;
+			_speed = 2.0f;
 			danio = 1;
 			skin = 0;
 			bulletskin = 3;
