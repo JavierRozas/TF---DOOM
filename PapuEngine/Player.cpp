@@ -22,6 +22,10 @@ void Player::init(float speed, glm::vec2 position,
 	_lastkey = 'w';
 	danio = 1;
 	vida = 500;
+	skin = 0;
+	bulletskin = 3;
+	boosted = false;
+	boosttime = 1000;
 }
 
 void Player::update(const std::vector<std::string>& levelData,
@@ -68,9 +72,10 @@ void Player::boost() {
 	srand(time(0));
 	int r = rand() % (2);
 	switch (r) {
-	case 0: _speed += 0.3; break;
-	case 1: danio += 2; break;
+	case 0: _speed = 5.0; skin = 4; break;
+	case 1: danio = 5; bulletskin = 5; skin = 4; break;
 	}
+	boosted = true;
 }
 
 int Player::get_danio() {
@@ -85,5 +90,35 @@ int Player::get_vida()
 void Player::set_vida(int vida)
 {
 	this->vida = vida;
+}
+
+int Player::get_skin()
+{
+	return skin;
+}
+
+void Player::set_skin(int _skin)
+{
+	skin = _skin;
+}
+
+int Player::getbulletskin()
+{
+	return bulletskin;
+}
+
+void Player::desgastarboost()
+{
+	if (boosted == true) {
+		boosttime = boosttime - 1;
+		if (boosttime < 0) {
+			boosttime = 500;
+			boosted = false;
+			_speed = 1.2f;
+			danio = 1;
+			skin = 0;
+			bulletskin = 3;
+		}
+	}
 }
 

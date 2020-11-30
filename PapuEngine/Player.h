@@ -10,6 +10,10 @@ private:
 	char _lastkey;
 	int danio;
 	int vida;
+	int skin;
+	int bulletskin;
+	bool boosted;
+	int boosttime;
 public:
 	Player();
 	void update(const std::vector<std::string>& levelData,
@@ -22,5 +26,9 @@ public:
 	int get_danio();
 	int get_vida();
 	void set_vida(int vida);
+	int get_skin();
+	void set_skin(int _skin);
+	int getbulletskin();
+	void desgastarboost();
 };
 

@@ -104,7 +104,9 @@ void Agent::draw(SpriteBacth& spriteBatch, int type)
 		w = h = 40;
 		break;
 	}
-	case 4: break;
+	case 4: textureID = ResourceManager::getTexture("Textures/boostp.png").id; break;
+	case 5: textureID = ResourceManager::getTexture("Textures/boostb.png").id; break;
+	case 6: break;
 	}
 	const glm::vec4 uvRect(0.0f, 0.0f, 1.0f, 1.0f);
 	if (type == 3) {

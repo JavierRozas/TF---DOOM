@@ -72,7 +72,7 @@ Human* Demonio::getNearestHuman(std::vector<Human*>& humans) {
 void Demonio::init(float speed, glm::vec2 position) {
 	_speed = speed;
 	_position = position;
-	_life = 3;
+	_life = 5;
 	// _color.set(0, 0, 0, 255);
 }
 

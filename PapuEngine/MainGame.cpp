@@ -29,8 +29,6 @@ void MainGame::initLevel() {
 	_currentLevel = 0;
 	tiempo_recarga_balas = 30;
 	bala_recargando = false;
-	_player->init(0.2f,
-		_levels[_currentLevel]->getPlayerPosition(), &_inputManager);
 	_player->init(1.2f,
 		_levels[_currentLevel]->getPlayerPosition(), &_inputManager);
 	_spriteBacth.init();
@@ -96,7 +94,7 @@ void MainGame::draw() {
 
 	_spriteBacth.begin();
 	_levels[_currentLevel]->draw();
-	_player->draw(_spriteBacth, 0);
+	_player->draw(_spriteBacth, _player->get_skin());
 
 	/*for (size_t i = 0; i < _humans.size(); i++)
 	{
@@ -111,7 +109,7 @@ void MainGame::draw() {
 		_objects[i]->draw(_spriteBacth, 2);
 	}
 	for (size_t i = 0; i < _proyectiles.size(); i++) {
-		_proyectiles[i]->draw(_spriteBacth, 3);
+		_proyectiles[i]->draw(_spriteBacth, _player->getbulletskin());
 	}
 	_spriteBacth.end();
 	_spriteBacth.renderBatch();
@@ -286,6 +284,9 @@ void MainGame::update() {
 				bala_recargando = false;
 			}
 		}
+
+		//GASTAR BOOST DEL PLAYER
+		_player->desgastarboost();
 	}
 }
 
