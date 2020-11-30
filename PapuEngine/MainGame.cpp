@@ -7,6 +7,12 @@
 #include "ResourceManager.h"
 #include "PapuEngine.h"
 
+// Para Agregar Sonido:
+#include <Windows.h>
+#include <Mmsystem.h>
+#include <mciapi.h>
+//these two headers are already included in the <Windows.h> header
+#pragma comment(lib, "Winmm.lib")
 
 using namespace std;
 
@@ -20,7 +26,6 @@ void MainGame::init() {
 	_window.create("Engine", _witdh, _height, 0);
 	initShaders();
 	initLevel();
-
 }
 
 void MainGame::initLevel() {
@@ -165,9 +170,11 @@ void MainGame::procesInput() {
 			break;
 		case  SDL_KEYUP:
 			_inputManager.releaseKey(event.key.keysym.sym);
+			//PlaySound("disparo_1.wav", NULL, SND_ASYNC | SND_FILENAME | SND_LOOP);
 			break;
 		case  SDL_KEYDOWN:
 			_inputManager.pressKey(event.key.keysym.sym);
+			//PlaySound("disparo_1.wav", NULL, SND_ASYNC | SND_FILENAME | SND_LOOP);
 			break;
 		case SDL_MOUSEBUTTONDOWN:
 			_inputManager.pressKey(event.button.button);
@@ -206,6 +213,7 @@ void MainGame::procesInput() {
 				_player->update(_levels[_currentLevel]->getLevelData());
 				_proyectiles.back()->init(2.0f, _player->getPosition(), _player->getlastkey());
 				bala_recargando = true;
+				PlaySound("disparo_1.wav", NULL, SND_ASYNC);
 			}
 		}
 	}
@@ -444,6 +452,7 @@ void MainGame::update() {
 			if (_objects[i]->collideWithAgent(_player)) {
 				_objects.erase(_objects.begin() + i);
 				_player->boost();
+				PlaySound("power.wav", NULL, SND_ASYNC);
 			}
 		}
 		for (size_t i = 0; i < _proyectiles.size(); i++)
