@@ -287,6 +287,18 @@ void MainGame::update() {
 					strongdemons[j]->randir();
 				}
 			}
+			for (size_t j = 0; j < lowdemons.size(); j++) {
+				if (strongdemons[i]->collideWithAgent(lowdemons[j])) {
+					strongdemons[i]->randir();
+					lowdemons[j]->randir();
+				}
+			}
+			for (size_t j = 0; j < meddemons.size(); j++) {
+				if (strongdemons[i]->collideWithAgent(meddemons[j])) {
+					strongdemons[i]->randir();
+					meddemons[j]->randir();
+				}
+			}
 		}
 
 		//Validaciones de Demonio Medio
@@ -343,6 +355,18 @@ void MainGame::update() {
 					meddemons[j]->randir();
 				}
 			}
+			for (size_t j = 0; j < strongdemons.size(); j++) {
+				if (meddemons[i]->collideWithAgent(strongdemons[j])) {
+					meddemons[i]->randir();
+					strongdemons[j]->randir();
+				}
+			}
+			for (size_t j = 0; j < lowdemons.size(); j++) {
+				if (meddemons[i]->collideWithAgent(lowdemons[j])) {
+					meddemons[i]->randir();
+					lowdemons[j]->randir();
+				}
+			}
 		}
 
 		//Validaciones de Demonio Debiles
@@ -397,6 +421,18 @@ void MainGame::update() {
 				if (lowdemons[i]->collideWithAgent(lowdemons[j])) {
 					lowdemons[i]->randir();
 					lowdemons[j]->randir();
+				}
+			}
+			for (size_t j = 0; j < meddemons.size(); j++) {
+				if (lowdemons[i]->collideWithAgent(meddemons[j])) {
+					lowdemons[i]->randir();
+					meddemons[j]->randir();
+				}
+			}
+			for (size_t j = 0; j < strongdemons.size(); j++) {
+				if (lowdemons[i]->collideWithAgent(strongdemons[j])) {
+					lowdemons[i]->randir();
+					strongdemons[j]->randir();
 				}
 			}
 		}
