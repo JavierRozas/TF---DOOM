@@ -70,7 +70,8 @@ Human* Demonio::getNearestHuman(std::vector<Human*>& humans) {
 void Demonio::init(float speed, glm::vec2 position) {
 	_speed = speed;
 	_position = position;
-	_life = 5;
+	atacktime = 100;
+	atackin = false;
 	// _color.set(0, 0, 0, 255);
 }
 
@@ -87,5 +88,31 @@ int Demonio::get_life() {
 void Demonio::inflict(int i)
 {
 	_life -= i;
+}
+
+bool Demonio::getatackin()
+{
+	return atackin;
+}
+
+void Demonio::setatackin(bool _atackin)
+{
+	atackin = _atackin;
+}
+
+void Demonio::atacando()
+{
+	if (atackin == true) {
+		atacktime = atacktime - 1;
+		if (atacktime < 0) {
+			atackin = false;
+			atacktime = 100;
+		}
+	}
+}
+
+int Demonio::getdanio()
+{
+	return danio;
 }
 

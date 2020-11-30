@@ -131,15 +131,30 @@ void MainGame::draw() {
 	}*/
 	for (size_t i = 0; i < strongdemons.size(); i++)
 	{
-		strongdemons[i]->draw(_spriteBacth, 1);
+		if (strongdemons[i]->getatackin()) {
+			strongdemons[i]->draw(_spriteBacth, 8);
+		}
+		else {
+			strongdemons[i]->draw(_spriteBacth, 1);
+		}
 	}
 	for (size_t i = 0; i < meddemons.size(); i++)
 	{
-		meddemons[i]->draw(_spriteBacth, 6);
+		if (meddemons[i]->getatackin()) {
+			meddemons[i]->draw(_spriteBacth, 9);
+		}
+		else {
+			meddemons[i]->draw(_spriteBacth, 6);
+		}
 	}
 	for (size_t i = 0; i < lowdemons.size(); i++)
 	{
-		lowdemons[i]->draw(_spriteBacth, 7);
+		if (lowdemons[i]->getatackin()) {
+			lowdemons[i]->draw(_spriteBacth, 10);
+		}
+		else {
+			lowdemons[i]->draw(_spriteBacth, 7);
+		}
 	}
 	for (size_t i = 0; i < _objects.size(); i++)
 	{
@@ -256,10 +271,13 @@ void MainGame::update() {
 				addMusic("ataque.wav");
 				if (_player->get_vida() == 0) {
 					this->initLevel();
-					_player->set_vida(500);
+					_player->set_vida(10);
 				}
 				else {
-					_player->set_vida(_player->get_vida() - 1);
+					if (strongdemons[i]->getatackin() == false) {
+						_player->set_vida(_player->get_vida() - strongdemons[i]->getdanio());
+						strongdemons[i]->setatackin(true);
+					}
 				}
 			}
 
@@ -313,6 +331,9 @@ void MainGame::update() {
 					meddemons[j]->randir();
 				}
 			}
+
+			//RECARGA DE ATAQUE DE DEMONIOS
+			strongdemons[i]->atacando();
 		}
 
 		//Validaciones de Demonio Medio
@@ -323,10 +344,13 @@ void MainGame::update() {
 				addMusic("ataque.wav");
 				if (_player->get_vida() == 0) {
 					this->initLevel();
-					_player->set_vida(500);
+					_player->set_vida(10);
 				}
 				else {
-					_player->set_vida(_player->get_vida() - 1);
+					if (meddemons[i]->getatackin() == false) {
+						_player->set_vida(_player->get_vida() - meddemons[i]->getdanio());
+						meddemons[i]->setatackin(true);
+					}
 				}
 			}
 
@@ -381,6 +405,9 @@ void MainGame::update() {
 					lowdemons[j]->randir();
 				}
 			}
+
+			//RECARGA DE ATAQUE DE DEMONIOS
+			meddemons[i]->atacando();
 		}
 
 		//Validaciones de Demonio Debiles
@@ -391,10 +418,13 @@ void MainGame::update() {
 				addMusic("ataque.wav");
 				if (_player->get_vida() == 0) {
 					this->initLevel();
-					_player->set_vida(500);
+					_player->set_vida(10);
 				}
 				else {
-					_player->set_vida(_player->get_vida() - 1);
+					if (lowdemons[i]->getatackin() == false) {
+						_player->set_vida(_player->get_vida() - lowdemons[i]->getdanio());
+						lowdemons[i]->setatackin(true);
+					}
 				}
 			}
 
@@ -449,6 +479,9 @@ void MainGame::update() {
 					strongdemons[j]->randir();
 				}
 			}
+
+			//RECARGA DE ATAQUE DE DEMONIOS
+			lowdemons[i]->atacando();
 		}
 
 

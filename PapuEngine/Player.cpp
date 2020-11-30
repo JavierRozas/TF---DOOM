@@ -21,7 +21,7 @@ void Player::init(float speed, glm::vec2 position,
 	_inputManager = inputManager;
 	_lastkey = 'w';
 	danio = 1;
-	vida = 500;
+	vida = 10;
 	skin = 0;
 	bulletskin = 3;
 	boosted = false;
