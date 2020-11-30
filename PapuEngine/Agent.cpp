@@ -111,7 +111,8 @@ void Agent::draw(SpriteBacth& spriteBatch, int type)
 	case 8: textureID = ResourceManager::getTexture("Textures/strongdemonatck.png").id; break;
 	case 9: textureID = ResourceManager::getTexture("Textures/meddemonatck.png").id; break;
 	case 10: textureID = ResourceManager::getTexture("Textures/lowdemonatck.png").id; break;
-	case 11: break;
+	case 11: textureID = ResourceManager::getTexture("Textures/fastp.png").id; break;
+	case 12: break;
 	}
 	const glm::vec4 uvRect(0.0f, 0.0f, 1.0f, 1.0f);
 	if (type == 3) {
