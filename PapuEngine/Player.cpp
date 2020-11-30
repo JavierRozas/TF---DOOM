@@ -71,8 +71,8 @@ void Player::boost() {
 	srand(time(0));
 	int r = rand() % (2);
 	switch (r) {
-	case 0: _speed = 5.0; skin = 4; break;
-	case 1: danio = 5; bulletskin = 5; skin = 4; break;
+	case 0: _speed = 5.0; skin = 11; boosttime = 500;  break;
+	case 1: danio = 5; bulletskin = 5; skin = 4; boosttime = 500;  break;
 	}
 	boosted = true;
 }
@@ -113,7 +113,7 @@ void Player::desgastarboost()
 		if (boosttime < 0) {
 			boosttime = 500;
 			boosted = false;
-			_speed = 1.2f;
+			_speed = 2.0f;
 			danio = 1;
 			skin = 0;
 			bulletskin = 3;
