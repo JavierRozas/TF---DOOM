@@ -35,6 +35,7 @@ int main(int argc,char** argv) {
 
 	if(start == 's')
 	{
+		PlaySound(TEXT("Sonidos/inicio.wav"), NULL, SND_FILENAME | SND_ASYNC);
 		SDL_Init(SDL_INIT_EVERYTHING);
 		MainGame mainge;
 		mainge.run();
